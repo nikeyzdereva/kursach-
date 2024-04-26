@@ -1,0 +1,40 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Вход в систему</h1>
+        <nav>
+            <a href="/register/">Регистрация</a>
+            <a href="/">Главная</a>
+        </nav>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            <p><label>Имя пользователя:<br><input type="text" name="username"></label></p>
+            <p><label>Пароль:<br><input type="password" name="password"></label></p>
+            <p><button type="submit">Войти</button></p>
+        </form>
+    </main>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <footer>
+        <p>© 2024 Косметика Магазин                                            контакты - 8-952-940-7672</p>
+    </footer>
+</body>
+</html>

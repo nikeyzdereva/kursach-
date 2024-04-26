@@ -1,0 +1,67 @@
+{% load static %}
+{% load cart_tags %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Beauty Paradise</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+
+    <header>
+        <h1>Beauty Paradise</h1>
+        {% if user.is_authenticated %}
+            <div class="user-info">
+                Привет, {{ user.username }}!
+                <a href="{% url 'logout' %}" class="button">Выход</a>
+            </div>
+        {% else %}
+            <nav>
+                <a href="{% url 'login' %}" class="button">Вход</a>
+                <a href="{% url 'register' %}" class="button">Регистрация</a>
+            </nav>
+        {% endif %}
+    </header>
+    <div class="banner">
+    <h2>Добро пожаловать в Beauty Paradise!</h2>
+    <p>Мы рады предложить вам лучшие продукты для вашей красоты и ухода. Приходите за красотой!</p>
+    </div>
+
+    <div class="main-content">
+        <div class="product-list">
+            {% for product in products %}
+                <div class="product">
+                    <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                    <div class="product-details">
+                        <h3>{{ product.name }}</h3>
+                        <p>{{ product.description }}</p>
+                        <p>Цена: {{ product.price }}₽</p>
+                        {% if user.is_authenticated %}
+                            <button onclick="location.href='{% url 'add_to_cart' product.id %}'" class="button">Добавить в корзину</button>
+                            <button onclick="location.href='{% url 'remove_from_cart' product.id %}'" class="button">Удалить из корзины</button>
+                        {% endif %}
+                    </div>
+                </div>
+            {% empty %}
+                <p>Товары отсутствуют.</p>
+            {% endfor %}
+        </div>
+        {% if user.is_authenticated and cart %}
+            <div class="cart-summary">
+                <h3>Ваша корзина:</h3>
+                {% for item in cart.cartproduct_set.all %}
+                    <p>{{ item.product.name }} - {{ item.quantity }} шт. ({{ item.quantity|multiply:item.product.price }}₽)</p>
+                {% empty %}
+                    <p>Корзина пуста.</p>
+                {% endfor %}
+                <p><strong>Всего: {{ cart.cartproduct_set.all|sum_cart_total }}₽</strong></p>
+                <button onclick="location.href='{% url 'cart' %}'" class="button">Посмотреть корзину</button>
+            </div>
+        {% endif %}
+    </div>
+    <footer>
+        <p>© 2024 Beauty Paradise                                            контакты - 8-952-940-7672</p>
+    </footer>
+</body>
+</html>

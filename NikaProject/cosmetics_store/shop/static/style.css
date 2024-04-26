@@ -1,0 +1,105 @@
+body {
+    font-family: 'Times new roman', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fce4ec; /* Нежно розовый цвет */
+}
+header, footer {
+    background-color: #65626A;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.banner {
+    text-align: center;
+    background-image: url('C:\Users\nikey\Desktop\foto.jpg');
+    background-size: 20px 20px;
+}
+
+.header nav a,
+footer a {
+    color: white;
+    margin-left: 15px;
+    text-decoration: none;
+}
+.main-content {
+    display: flex;
+}
+.product-list {
+    width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+}
+.product {
+    width: 30%;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product img {
+    width: 100%;
+    display: block;
+}
+.product h3 {
+    background-color: #343a40;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    text-align: center;
+}
+.product-details {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 200px;
+}
+.product-details p {
+    margin: 5px 0;
+}
+.product-actions {
+    text-align: center;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
+}
+.cart-summary {
+    width: 300px; /* Измените ширину по вашему усмотрению */
+    position: fixed;
+    right: 20px;
+    top: 80px; /* Расстояние от верха страницы */
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 1000;
+}
+.button {
+    display: inline-block;
+    padding: 5px 15px;
+    text-align: center;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    text-decoration: none;
+}
+.button:hover {
+    background-color: #0056b3;
+}
+/* Стили для кнопок внутри карточек товаров */
+.product .button {
+    width: calc(50% - 10px); /* Минус отступ */
+    box-sizing: border-box;
+}
