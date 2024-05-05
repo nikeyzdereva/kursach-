@@ -1,6 +1,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 <head>
     <meta charset="UTF-8">
     <title>Вход</title>
@@ -10,31 +11,28 @@
     <header>
         <h1>Вход в систему</h1>
         <nav>
+            <div class="button-container1">
+            <div class="button1">
             <a href="/register/">Регистрация</a>
             <a href="/">Главная</a>
+            </div>
+            </div>
         </nav>
     </header>
-    <main>
-        <form method="post">
-            {% csrf_token %}
-            <p><label>Имя пользователя:<br><input type="text" name="username"></label></p>
-            <p><label>Пароль:<br><input type="password" name="password"></label></p>
-            <p><button type="submit">Войти</button></p>
-        </form>
-    </main>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+<main class="center">
+    <form method="post">
+        {% csrf_token %}
+        <p><label style="font-size: 1.2em;">Имя пользователя:<br><input type="text" name="username"></label></p>
+        <p><label style="font-size: 1.2em;">Пароль:<br><input type="password" name="password"></label></p>
+        <div class="button-container">
+            <button class="button" type="submit" style="font-size: 1.2em;">Войти</button>
+        </div>
+    </form>
+</main>
+    <div class="pol">
     <footer>
         <p>© 2024 Косметика Магазин                                            контакты - 8-952-940-7672</p>
     </footer>
+    </div>
 </body>
 </html>

@@ -11,34 +11,49 @@
     <header>
         <h1>Ваша корзина</h1>
         <nav>
+            <div class="button-container">
+            <div class="button1">
             <a href="{% url 'index' %}">Главная страница</a>
             {% if user.is_authenticated %}
-                <a href="{% url 'logout' %}">Выход</a>
+                    <a href="{% url 'logout' %}">Выход</a>
+                </div>
             {% else %}
+            <div class="button">
                 <a href="{% url 'login' %}">Вход</a>
                 <a href="{% url 'register' %}">Регистрация</a>
+                </div>
             {% endif %}
+            </div>
         </nav>
     </header>
     <main>
         {% if cart.products.all %}
-            <div class="product-list">
-                {% for item in cart.cartproduct_set.all %}
-                <div class="product">
-                    <h3>{{ item.product.name }}</h3>
-                    <p>Количество: {{ item.quantity }}</p>
-                    <p>Цена за штуку: {{ item.product.price }}₽</p>
-                    <p>Общая стоимость: {{ item.quantity|multiply:item.product.price }}₽</p>
-                    <a href="{% url 'remove_from_cart' item.product.id %}">Удалить из корзины</a>
-                </div>
-                {% endfor %}
+        {% for item in cart.cartproduct_set.all %}
+        <div class="product">
+            {% for item in cart.cartproduct_set.all %}
+            <div class="product1">
+                <h3>{{ item.product.name }}</h3>
+                <p>Количество: {{ item.quantity }}</p>
+                <p>Цена за штуку: {{ item.product.price }}₽</p>
+                <p>Общая стоимость: {{ item.quantity|multiply:item.product.price }}₽</p>
+                <div class="button-container">
+                <div class="button1">
+                <a href="{% url 'remove_from_cart' item.product.id %}">Удалить из корзины</a>
+                </div></div>
             </div>
+            {% endfor %}
+        </div>
+        {% endfor %}
         {% else %}
-            <p>Ваша корзина пуста</p>
+        <p>Ваша корзина пуста</p>
+    </main>
+    <main>
         {% endif %}
     </main>
+    <div class="pol">
     <footer>
         <p>© 2024 Косметика Магазин                                            контакты - 8-952-940-7672</p>
     </footer>
+    </div>
 </body>
 </html>

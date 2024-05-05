@@ -23,11 +23,28 @@
             </nav>
         {% endif %}
     </header>
+    {% if not user.is_authenticated %}
     <div class="banner">
-    <h2>Добро пожаловать в Beauty Paradise!</h2>
-    <p>Мы рады предложить вам лучшие продукты для вашей красоты и ухода. Приходите за красотой!</p>
+        <br>
+        <br>
+        <h2>Добро пожаловать в Beauty Paradise!</h2>
+        <br>
+        <p>Мы понимаем, что каждый человек уникален и имеет свои индивидуальные потребности.  </p>
+        <p>Поэтому мы предлагаем широкий выбор продуктов, чтобы вы могли найти именно то, что подходит вам лучше всего.</p>
+        <p>Наша команда экспертов всегда готова помочь вам выбрать идеальный продукт для вашего типа кожи и потребностей.</p>
+        <p>Не упустите возможность приобрести качественную косметику и получить профессиональный уход за своей кожей.</p>
+        <p>Мы уверены, что вы найдете что-то особенное для себя. Приходите за красотой!</p>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
     </div>
-
+    {% endif %}
+    <br>
+    <br>
+    <br>
+    <br>
     <div class="main-content">
         <div class="product-list">
             {% for product in products %}
@@ -39,7 +56,13 @@
                         <p>Цена: {{ product.price }}₽</p>
                         {% if user.is_authenticated %}
                             <button onclick="location.href='{% url 'add_to_cart' product.id %}'" class="button">Добавить в корзину</button>
-                            <button onclick="location.href='{% url 'remove_from_cart' product.id %}'" class="button">Удалить из корзины</button>
+                            {% if user.is_authenticated %}
+    {% if cart.cartproduct_set.exists %}
+        <button onclick="location.href='{% url 'remove_from_cart' product.id %}'" class="button">Удалить из корзины</button>
+    {% endif %}
+{% endif %}
+
+
                         {% endif %}
                     </div>
                 </div>
@@ -60,8 +83,10 @@
             </div>
         {% endif %}
     </div>
+    <div class="pol">
     <footer>
         <p>© 2024 Beauty Paradise                                            контакты - 8-952-940-7672</p>
     </footer>
+    </div>
 </body>
 </html>

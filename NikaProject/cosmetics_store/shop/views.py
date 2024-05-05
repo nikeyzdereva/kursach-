@@ -50,7 +50,12 @@ def add_to_cart(request, product_id):
     product = Product.objects.get(id=product_id)
     cart, created = Cart.objects.get_or_create(user=request.user)
     cart_product, created = CartProduct.objects.get_or_create(cart=cart, product=product)
-    cart_product.quantity += 1  # Добавляем один товар или увеличиваем количество
+    if created:
+        cart_product.quantity = 1
+        return redirect('index')
+    else:
+        cart_product.quantity += 1  # Добавляем один товар или увеличиваем количество
+
     cart_product.save()
     return redirect('index')
 
@@ -69,6 +74,7 @@ def remove_from_cart(request, product_id):
 
     # Удаление товара или уменьшение количества
     if cart_product.quantity > 1:
+
         cart_product.quantity -= 1
         cart_product.save()
     else:

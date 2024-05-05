@@ -1,8 +1,11 @@
 body {
-    font-family: 'Times new roman', sans-serif;
+    font-family: 'Roboto', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #fce4ec; /* Нежно розовый цвет */
+    background: radial-gradient(#fff, 60%, #fcd3e1);
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 130px;
 }
 header, footer {
     background-color: #65626A;
@@ -13,16 +16,22 @@ header, footer {
     align-items: center;
 }
 .banner {
+    background: url('oboi.png');
+    background-size: cover;
+    background-position: center;
+    color: rgba(255, 255, 255, 1);
+    padding: 20px;
     text-align: center;
-    background-image: url('C:\Users\nikey\Desktop\foto.jpg');
-    background-size: 20px 20px;
+    font-size: 24px;
+    border-radius: 50px;
+    text-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+    margin: 15px
 }
 
-.header nav a,
-footer a {
-    color: white;
-    margin-left: 15px;
-    text-decoration: none;
+.pol {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 .main-content {
     display: flex;
@@ -37,19 +46,49 @@ footer a {
 .product {
     width: 30%;
     margin: 10px;
-    background-color: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    background-color:#ffffff;
+    border: 1px solid #000000;
+    border-radius: 42px;
     overflow: hidden;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40vh;
+    width: 25%;
+    margin: 80px auto 0; /* Изменено для добавления отступа 20px сверху */
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 42px;
+    overflow: hidden;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1); /* Добавлена тень */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.center1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+    width: 35%;
+    margin: 60px auto 0; /* Изменено для добавления отступа 20px сверху */
+    background-color: #ffffff;
+    border: 1px solid #000000;
+    border-radius: 42px;
+    overflow: hidden;
+    box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1), 0 0 20px rgba(0, 0, 0, 0.1); /* Добавлена тень */
+    text-align: left; /* Выравнивание текста по левому краю */
+    padding-left: 20px; /* Добавлен отступ слева */
+}
+
 
 .product img {
     width: 100%;
     display: block;
 }
 .product h3 {
-    background-color: #343a40;
+    background-color: #65626A;
     color: white;
     margin: 0;
     padding: 10px;
@@ -71,6 +110,32 @@ footer a {
     background-color: #f8f9fa;
     border-top: 1px solid #ddd;
 }
+.product1 a{
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+
+.product1 h3 {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.product1 p {
+    margin: 5px 0;
+}
+
+.product1 a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.product1 a:hover {
+    text-decoration: none;
+}
+
+
 .cart-summary {
     width: 300px; /* Измените ширину по вашему усмотрению */
     position: fixed;
@@ -83,23 +148,70 @@ footer a {
     border-radius: 5px;
     z-index: 1000;
 }
+
 .button {
     display: inline-block;
-    padding: 5px 15px;
-    text-align: center;
-    margin: 5px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
+    padding: 10px 60px;
+    background-color: #D8BFD8;
+    color: #ffffff;
     text-decoration: none;
+    border-radius: 42px;
+    text-align: center;
+    cursor: pointer;
+    border: red;
 }
 .button:hover {
-    background-color: #0056b3;
+    background-color: #fdccff;
 }
+.button-container {
+    text-align: center;
+}
+.button-container1 {
+    display: flex;
+    flex-direction: row;
+}
+
+.button1 a {
+    display: inline-block;
+    padding: 10px 60px;
+    background-color: #D8BFD8;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 42px;
+    text-align: center;
+    cursor: pointer;
+    border: #D8BFD8;
+}
+
+.button1 a:hover {
+    background-color: #fdccff;
+}
+.button2 {
+    display: inline-block;
+    padding: 10px 60px;
+    background-color: #D8BFD8;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 42px;
+    text-align: center;
+    cursor: pointer;
+    border: #D8BFD8;
+    float: right; /* Добавляем выравнивание по правому краю */
+}
+.button2 :hover {
+    background-color: #fdccff;
+}
+
 /* Стили для кнопок внутри карточек товаров */
 .product .button {
-    width: calc(50% - 10px); /* Минус отступ */
+    width: calc(100% - 10px); /* Минус отступ */
     box-sizing: border-box;
+    border: #D8BFD8;
+}
+
+.header nav a,
+footer a {
+    color: white;
+    margin-left: 40px;
+    text-decoration: none;
 }

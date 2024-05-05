@@ -10,35 +10,28 @@
     <header>
         <h1>Регистрация</h1>
         <nav>
+            <div class="button1">
             <a href="/login/">Вход</a>
             <a href="/">Главная</a>
+            </div>
         </nav>
     </header>
     <br>
     <br>
     <br>
-    <main>
+    <main class="center1">
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit">Зарегистрироваться</button>
+            <div class="button-container">
+                <button class="button" type="submit"> Зарегистрироваться</button>
+            </div>
         </form>
     </main>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
+    <div class="pol">
     <footer>
         <p>© 2024 Косметика Магазин                                            контакты - 8-952-940-7672</p>
     </footer>
+    </div>
 </body>
 </html>
